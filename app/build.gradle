@@ -25,9 +25,14 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
+
+    packagingOptions {
+        exclude 'META-INF/spring.tooling'
+    }
+
 }
 
 dependencies {
@@ -37,6 +42,12 @@ dependencies {
     implementation libs.activity
     implementation libs.constraintlayout
 
+    // Core Spring Framework dependencies
+    implementation 'org.springframework:spring-core:6.1.6'
+    implementation 'org.springframework:spring-context:6.1.6'
+
+    // Spring Data MongoDB dependency
+    implementation 'org.springframework.data:spring-data-mongodb:3.2.5'
 
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit

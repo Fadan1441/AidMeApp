@@ -1,33 +1,22 @@
 package com.example.test;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 
-
-
+@Document(collation = "Users")
 public class User {
 
-
-    String username;
-
-
-    String Email;
-
-
-    String password;
+    @Id
+    private String id;
+    private String username;
+    private String Email;
+    private String password;
 
 
-    int id;
-
-    public User(){
-
-
-    }
-
-
-    public User (String username,String Email,String password){
-        this.Email = Email;
+    public User (String username,String email,String password){
+        this.Email = email;
         this.username = username;
         this.password =password;
-        this.id= 0;
     }
 
 
