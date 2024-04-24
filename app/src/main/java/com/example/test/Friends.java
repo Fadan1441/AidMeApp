@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,14 +18,14 @@ public class Friends extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_friends);
-
+        //getting the token
         String authToken = getIntent().getStringExtra("AUTH_TOKEN");
-        Button gotoaddFriendbtn = findViewById(R.id.gotoAddFriends);
+        Button goToAddFriendbtn = findViewById(R.id.gotoAddFriends);
 
 
 
 
-            gotoaddFriendbtn.setOnClickListener(new View.OnClickListener() {
+            goToAddFriendbtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
@@ -37,10 +36,6 @@ public class Friends extends AppCompatActivity {
                     intent.putExtra("AUTH_TOKEN", authToken);
 
                     startActivity(intent);
-
-
-
-
 
 
                 }

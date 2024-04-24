@@ -48,7 +48,7 @@
         android:layout_marginBottom="344dp"
         android:ems="10"
         android:inputType="text"
-        android:text="ID_number"
+        android:hint="ID_number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.445"

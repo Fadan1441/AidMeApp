@@ -1,8 +1,5 @@
 package com.example.test;
-
-
 import android.content.Intent;
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -11,22 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-
 import androidx.appcompat.app.AppCompatActivity;
-
-
 import org.bson.Document;
-
-
-
-
-
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
 import io.realm.Realm;
-import io.realm.RealmResults;
 import io.realm.mongodb.App;
 import io.realm.mongodb.AppConfiguration;
 import io.realm.mongodb.Credentials;
@@ -97,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
                     mongoClient= mongoUser.getMongoClient("mongodb-atlas");
                     mongoDatabase = mongoClient.getDatabase("GradProject");
                     mongoCollection = mongoDatabase.getCollection("Users");
-
 
 
                     registerButton.setOnClickListener(new View.OnClickListener() {
