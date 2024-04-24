@@ -34,24 +34,24 @@
         android:layout_marginBottom="48dp"
         android:text="Enter Friend ID"
         android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText"
+        app:layout_constraintBottom_toTopOf="@+id/etFriendId"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.459"
+        app:layout_constraintHorizontal_bias="0.455"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView13"
-        app:layout_constraintVertical_bias="0.994" />
+        app:layout_constraintVertical_bias="0.807" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/etFriendId"
         android:layout_width="236dp"
         android:layout_height="68dp"
-        android:layout_marginBottom="344dp"
+        android:layout_marginBottom="380dp"
         android:ems="10"
-        android:inputType="text"
         android:hint="ID_number"
+        android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.445"
+        app:layout_constraintHorizontal_bias="0.44"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -63,8 +63,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.455"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText"
-        app:layout_constraintVertical_bias="0.359" />
+        app:layout_constraintTop_toBottomOf="@+id/etFriendId"
+        app:layout_constraintVertical_bias="0.308" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

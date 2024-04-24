@@ -4,8 +4,6 @@ import static com.example.test.MainActivity.mongoCollection;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,23 +11,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import io.realm.mongodb.App;
-import io.realm.mongodb.User;
-import io.realm.mongodb.mongo.MongoClient;
-import io.realm.mongodb.mongo.MongoCollection;
-import io.realm.mongodb.mongo.MongoDatabase;
 import io.realm.mongodb.mongo.iterable.MongoCursor;
 import androidx.appcompat.app.AppCompatActivity;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
 
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 import io.realm.mongodb.RealmResultTask;
-import io.realm.mongodb.mongo.iterable.MongoCursor;
 
 public class SignIN extends AppCompatActivity {
     private EditText emailEditText, passwordEditText;
@@ -84,7 +72,7 @@ String authToken;
                             String userId = documentId.toString();
 
 
-                             authToken = SesstionManger.createSession(userId);
+                             authToken = SessionManger.createSession(userId);
 
 
                             Log.v("Data", "Session Token Created ");

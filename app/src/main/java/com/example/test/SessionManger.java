@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class SesstionManger {
+public class SessionManger {
 
 
     private static final Map<String, String> sessionMap = new HashMap<>();

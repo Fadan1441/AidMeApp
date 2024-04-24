@@ -25,13 +25,13 @@ public class MyService{
 
         //adding the friend to the current user list
         Query queryCurrentUser = new Query(Criteria.where("_id").is(userId));
-        Update updateCurrentUser = new Update().addToSet("friends",friendId);
+        Update updateCurrentUser = new Update().push("friends",friendId);
         mongoTemplate.updateFirst(queryCurrentUser, updateCurrentUser, User.class);
 
 
         //adding the current user to the friend list
         Query queryFriendUser = new Query(Criteria.where("_id").is(friendId));
-        Update updateFriendUser = new Update().addToSet("friends",userId);
+        Update updateFriendUser = new Update().push("friends",userId);
         mongoTemplate.updateFirst(queryFriendUser, updateFriendUser, User.class);
 
 

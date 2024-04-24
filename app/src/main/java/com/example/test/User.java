@@ -2,8 +2,6 @@ package com.example.test;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -17,14 +15,7 @@ public class User {
     private String username;
     private String Email;
     private String password;
-    private List<ObjectId> friends = new ArrayList<>();
-
-    public User (String username,String email,String password){
-        this.Email = email;
-        this.username = username;
-        this.password =password;
-    }
-
+    private List<ObjectId> friends;
 
     public String getEmail() {
 
