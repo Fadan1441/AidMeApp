@@ -28,7 +28,7 @@ public class Home1 extends AppCompatActivity {
         profile = findViewById(R.id.bProfile);
         friends = findViewById(R.id.bFriends);
         //getting the token
-        String authToken = getIntent().getStringExtra("AUTH_NAME");
+        String authToken = getIntent().getStringExtra("AUTH_TOKEN");
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());

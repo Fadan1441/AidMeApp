@@ -36,9 +36,10 @@ public class Add_Friends extends AppCompatActivity {
         setContentView(R.layout.activity_add_friends);
 
 
-        friendIdEditText = findViewById(R.id.etFriendId);
+        friendIdEditText = (EditText) findViewById(R.id.etFriendId);
+
         //getting the token
-        String authToken = getIntent().getStringExtra("AUTH_NAME");
+        String authToken = getIntent().getStringExtra("AUTH_TOKEN");
 
 
         AddFriendbtn = findViewById(R.id.addFriend);
@@ -82,12 +83,27 @@ public class Add_Friends extends AppCompatActivity {
               try {
 
 
+                  if(userId!=null) {
 
-                  //converting the ID's into ObjectId's
-                  ObjectId userObId = new ObjectId(userId);
-                  ObjectId friendObId = new ObjectId(friendId);
-                  //Call my service to add friends
-                  myService.addFriend(userObId, friendObId);
+
+                      //converting the ID's into ObjectId's
+                      ObjectId userObId = new ObjectId(userId);
+                      ObjectId friendObId = new ObjectId(friendIdEditText.getText().toString().trim());
+
+
+                      //Call my service to add friends
+                      myService.addFriend(userObId, friendObId);
+
+                  }else{
+
+
+                      Log.e("Add_Friends", "userId null" + userId);
+                      Toast.makeText(Add_Friends.this, "Invalid User ID", Toast.LENGTH_SHORT).show();
+
+
+                  }
+
+
 
                   Toast.makeText(Add_Friends.this, "Friend Added Successfully", Toast.LENGTH_SHORT).show();
 

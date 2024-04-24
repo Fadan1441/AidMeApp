@@ -23,6 +23,9 @@ public class MyService{
     public void addFriend(ObjectId userId, ObjectId friendId){
 
 
+
+
+
         //adding the friend to the current user list
         Query queryCurrentUser = new Query(Criteria.where("_id").is(userId));
         Update updateCurrentUser = new Update().push("friends",friendId);
