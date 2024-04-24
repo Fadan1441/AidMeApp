@@ -1,4 +1,6 @@
 package com.example.test;
+import android.util.Log;
+
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -23,8 +25,7 @@ public class MyService{
     public void addFriend(ObjectId userId, ObjectId friendId){
 
 
-
-
+        Log.v("Data",userId+""+friendId);
 
         //adding the friend to the current user list
         Query queryCurrentUser = new Query(Criteria.where("_id").is(userId));

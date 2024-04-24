@@ -1,4 +1,6 @@
 package com.example.test;
+import android.util.Log;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -17,6 +19,8 @@ public class SessionManger {
 
     // Retrieve the user ID associated with the session token
     public static String getUserId(String sessionToken) {
+
+
         return sessionMap.get(sessionToken);
     }
 
