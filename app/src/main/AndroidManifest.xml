@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Test"
         tools:targetApi="31">
         <activity
+            android:name=".Add_Friends"
+            android:exported="false" />
+        <activity
             android:name=".Friends"
             android:exported="false" />
         <activity

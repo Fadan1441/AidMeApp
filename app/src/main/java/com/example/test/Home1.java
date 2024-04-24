@@ -27,12 +27,16 @@ public class Home1 extends AppCompatActivity {
         notifi = findViewById(R.id.bNotifi);
         profile = findViewById(R.id.bProfile);
         friends = findViewById(R.id.bFriends);
+        //getting the token
+        String authToken = getIntent().getStringExtra("AUTH_NAME");
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+
 
         dial911.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,22 +55,43 @@ public class Home1 extends AppCompatActivity {
         notifi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Home1.this, Notifications.class));
+
+
+
+                Intent intent = new Intent(Home1.this, Notifications.class);
+                // Pass the authToken as an extra in the intent
+                intent.putExtra("AUTH_TOKEN", authToken);
+
+                startActivity(intent);
 
             }
         });
 
         profile.setOnClickListener(new View.OnClickListener() {
+
+
+
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Home1.this, Profile.class));
+
+
+                Intent intent = new Intent(Home1.this, Profile.class);
+                // Pass the authToken as an extra in the intent
+                intent.putExtra("AUTH_TOKEN", authToken);
+
+                startActivity(intent);
             }
+
         });
 
         friends.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Home1.this, Friends.class));
+                Intent intent = new Intent(Home1.this, Friends.class);
+                // Pass the authToken as an extra in the intent
+                intent.putExtra("AUTH_TOKEN", authToken);
+
+                startActivity(intent);
             }
         });
 

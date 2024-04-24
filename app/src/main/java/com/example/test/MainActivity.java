@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
         Realm.init(this);
         App app = new App(new AppConfiguration.Builder(Appid).build());
 
@@ -104,9 +105,6 @@ public class MainActivity extends AppCompatActivity {
                         public void onClick(View v) {
 
 
-
-
-                           //checkUserListInBackground(username,email,password);
 
 
                             Document queryFilter = new Document().append("email",emailEditText.getText().toString());
