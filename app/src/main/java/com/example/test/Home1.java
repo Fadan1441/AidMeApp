@@ -73,7 +73,7 @@ public class Home1 extends AppCompatActivity {
                 notificationButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        sendNotification();
+                        exampleMethodToCallSendNotification();
                     }
                 });
             }
@@ -183,6 +183,14 @@ public class Home1 extends AppCompatActivity {
         //     add device token to deviceTokens ArrayList
 
         return deviceTokens;
+    }
+    private void exampleMethodToCallSendNotification() {
+        // Assuming you have an ArrayList of user IDs
+        ArrayList<String> userIds = new ArrayList<>();
+        userIds.add("user1");
+        userIds.add("user2");
+        // Add more user IDs as needed
+        sendNotification(userIds);
     }
 
 }
