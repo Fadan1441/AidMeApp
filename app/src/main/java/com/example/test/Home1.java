@@ -25,6 +25,7 @@ import org.bson.Document;
 import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import io.realm.Realm;
 import io.realm.mongodb.App;
@@ -73,7 +74,7 @@ public class Home1 extends AppCompatActivity {
                 notificationButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        exampleMethodToCallSendNotification();
+                        sendNotificationToAll();
                     }
                 });
             }
@@ -141,7 +142,10 @@ public class Home1 extends AppCompatActivity {
 
 
 
-    private void sendNotification(ArrayList<String> userIds) {
+    private void sendNotificationToAll() {
+        // Retrieve list of recipients from MongoDB
+        List<String> recipients = retrieveRecipientsFromMongoDB();
+
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         // Create Notification Channel (required for API 26+)
@@ -153,44 +157,38 @@ public class Home1 extends AppCompatActivity {
             notificationManager.createNotificationChannel(channel);
         }
 
-        // Retrieve device tokens or identifiers from MongoDB based on user IDs
-        ArrayList<String> deviceTokens = getDeviceTokensFromMongoDB(userIds);
-
-        // Build the notification for each device token
-        for (String token : deviceTokens) {
-            // Customize notification content as needed
+        // Iterate over each recipient and send a notification
+        for (String recipient : recipients) {
+            // Build the notification for each recipient
             NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
                     .setSmallIcon(R.drawable.ic_notification)
                     .setContentTitle("AidMe")
-                    .setContentText("I NEED HELP")
+                    .setContentText("Hello " + recipient + ", I NEED HELP")
                     .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
             // Show the notification
-            notificationManager.notify(NOTIFICATION_ID, builder.build());
+            notificationManager.notify(generateNotificationId(), builder.build());
         }
     }
 
-    private ArrayList<String> getDeviceTokensFromMongoDB(ArrayList<String> userIds) {
-        ArrayList<String> deviceTokens = new ArrayList<>();
-
-        // Use MongoDB query to retrieve device tokens based on user IDs
-        // Here, you would implement the logic to query your MongoDB collection
-        // and fetch the device tokens for the given user IDs
-
-        // Example pseudo-code:
-        // for each userId in userIds:
-        //     query MongoDB to get device token for userId
-        //     add device token to deviceTokens ArrayList
-
-        return deviceTokens;
+    // Generate unique notification ID for each notification
+    private int generateNotificationId() {
+        // You can implement your own logic to generate a unique ID here
+        return (int) System.currentTimeMillis();
     }
-    private void exampleMethodToCallSendNotification() {
-        // Assuming you have an ArrayList of user IDs
-        ArrayList<String> userIds = new ArrayList<>();
-        userIds.add("user1");
-        userIds.add("user2");
-        // Add more user IDs as needed
-        sendNotification(userIds);
+
+    // Method to retrieve recipients from MongoDB
+    private List<String> retrieveRecipientsFromMongoDB() {
+        // Implement your logic to retrieve recipients from MongoDB here
+        // Example: You can use MongoDB Java driver or an ORM library like Spring Data MongoDB
+        // Return a list of recipient names or IDs
+        // For demonstration purpose, I'll return a hardcoded list
+        List<String> recipients = new ArrayList<>();
+        recipients.add("Recipient1");
+        recipients.add("Recipient2");
+        recipients.add("Recipient3");
+        // Add more recipients as needed
+        return recipients;
     }
 
 }
