@@ -16,7 +16,7 @@
         android:id="@+id/textView12"
         android:layout_width="match_parent"
         android:layout_height="61dp"
-        android:background="@android:color/holo_red_light"
+        android:background="#2B4678"
         android:text="Notifications"
         android:textAlignment="center"
         android:textColor="@color/white"

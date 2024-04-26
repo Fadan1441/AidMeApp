@@ -12,7 +12,7 @@
         android:id="@+id/textView11"
         android:layout_width="match_parent"
         android:layout_height="61dp"
-        android:background="@android:color/system_control_activated_dark"
+        android:background="#2B4678"
         android:text="Profile"
         android:textAlignment="center"
         android:textColor="@color/white"
