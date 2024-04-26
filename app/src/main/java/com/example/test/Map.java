@@ -13,6 +13,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+
 public class Map extends AppCompatActivity implements OnMapReadyCallback {
     private GoogleMap myMap ;
 
@@ -35,7 +36,7 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
         LatLng Jeddah = new LatLng(21.492500, 39.177570);
         myMap.moveCamera(CameraUpdateFactory.newLatLng(Jeddah));
         MarkerOptions options = new MarkerOptions().position(Jeddah).title("Jeddah");
-        options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+        options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
         myMap.addMarker(options);
 
     }
