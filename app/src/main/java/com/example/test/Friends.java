@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,7 +14,6 @@ import org.bson.Document;
 import org.bson.types.ObjectId;
 import java.util.ArrayList;
 import java.util.List;
-
 import io.realm.Realm;
 import io.realm.mongodb.App;
 import io.realm.mongodb.AppConfiguration;
@@ -31,13 +29,8 @@ public class Friends extends AppCompatActivity implements FriendsIDsCallback , F
 
     MongoDatabase mongoDatabase;
     MongoClient mongoClient;
-    public static MongoCollection<Document> mongoCollection;
-    List<String> userFriends = new ArrayList<>();
-    List<FriendsNamesandID> friendsNamesandId = new ArrayList<>();
-    List<String> nfriendsIDList = new ArrayList<>();
-    List<String> nfriendsNamesList = new ArrayList<>();
-    String[] friendsIdArray;
-    String [] namesArray;
+    private MongoCollection<Document> mongoCollection;
+    private List<FriendsNamesandID> friendsNamesandId = new ArrayList<>();
     RecyclerView recyclerView;
     String Appid = "application-0-dlsschp";
 
@@ -49,23 +42,15 @@ public class Friends extends AppCompatActivity implements FriendsIDsCallback , F
         //getting the token
         String authToken = getIntent().getStringExtra("AUTH_TOKEN");
         Button goToAddFriendbtn = findViewById(R.id.gotoAddFriends);
-        RecyclerView recyclerView = findViewById(R.id.FriendRecyclerView);
+        recyclerView = findViewById(R.id.FriendRecyclerView);
 
         // signing in into mogo databaase
         Realm.init(this);
-        App app = new App(new AppConfiguration.Builder(Appid).build());
-        Credentials credentials = Credentials.emailPassword("moody1441@gmail.com", "moodysf1423");
-        app.loginAsync(credentials, new App.Callback<io.realm.mongodb.User>() {
-            @Override
-            public void onResult(App.Result<io.realm.mongodb.User> result) {
-                User mongoUser = app.currentUser();
-                mongoClient = mongoUser.getMongoClient("mongodb-atlas");
-                mongoDatabase = mongoClient.getDatabase("GradProject");
-                mongoCollection = mongoDatabase.getCollection("Users");
 
                 goToAddFriendbtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
                         Intent intent = new Intent(Friends.this, Add_Friends.class);
                         // Pass the authToken as an extra in the intent
                         intent.putExtra("AUTH_TOKEN", authToken);
@@ -74,30 +59,37 @@ public class Friends extends AppCompatActivity implements FriendsIDsCallback , F
                 });
 
 
-                String newuserID = SessionManger.getUserId(authToken);
-
-
-                GetFriendsIDsTask getFriendsIDsTask = new GetFriendsIDsTask(mongoCollection);
-                getFriendsIDsTask.execute(newuserID);
-
-
-
-
-
-
-            }
-        });
-
-
           RecycleViewAdapter adapter = new RecycleViewAdapter(this, friendsNamesandId);
           recyclerView.setAdapter(adapter);
           recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+          fetchFriendIDs();
 
 
     }
+    private void fetchFriendIDs(){
+
+          String authToken = getIntent().getStringExtra("AUTH_TOKEN");
+          App app = new App(new AppConfiguration.Builder(Appid).build());
+          Credentials credentials = Credentials.emailPassword("moody1441@gmail.com", "moodysf1423");
+          app.loginAsync(credentials, new App.Callback<io.realm.mongodb.User>() {
+              @Override
+              public void onResult(App.Result<io.realm.mongodb.User> result) {
+
+                  User mongoUser = app.currentUser();
+                  mongoClient = mongoUser.getMongoClient("mongodb-atlas");
+                  mongoDatabase = mongoClient.getDatabase("GradProject");
+                  mongoCollection = mongoDatabase.getCollection("Users");
 
 
+                  String newuserID = SessionManger.getUserId(authToken);
+                  new GetFriendsIDsTask(mongoCollection,Friends.this).execute(newuserID);
+      }
+});
+
+
+
+      }
 
 
 
@@ -109,27 +101,32 @@ public class Friends extends AppCompatActivity implements FriendsIDsCallback , F
     @Override
     public void onFriendsIDReceived(List<String> friendsIDList) {
 
-        GetFriendsNamesTask getFriendsNamesTask = new GetFriendsNamesTask(mongoCollection);
-        getFriendsNamesTask.execute(friendsIDList);
 
         List<String> processedIDs = new ArrayList<>();
 
         for (String friendID : friendsIDList) {
             processedIDs.add(friendID);
         }
-        friendsIdArray = processedIDs.toArray(new String[0]);
+
+        new GetFriendsNamesTask(mongoCollection, this).execute(processedIDs);
     }
+
 
     @Override
     public void onFriendsNamesReceived(List<String> friendsNamesList) {
 
+        friendsNamesandId.clear();
         List<String> processedIDs = new ArrayList<>();
 
         for (String friendNames : friendsNamesList) {
             processedIDs.add(friendNames);
         }
-           namesArray = processedIDs.toArray(new String[0]);
-            Log.v("Data","number of j friends is: "+namesArray.length);
+        for (int i = 0; i < processedIDs.size(); i++) {
+            friendsNamesandId.add(new FriendsNamesandID(friendsNamesList.get(i), processedIDs.get(i)));
+
+        }
+
+        recyclerView.getAdapter().notifyDataSetChanged();
 
     }
 
@@ -151,8 +148,9 @@ public class Friends extends AppCompatActivity implements FriendsIDsCallback , F
         private MongoCollection<Document> mongoCollection;
         private FriendsIDsCallback callback;
 
-        public GetFriendsIDsTask(MongoCollection<Document> mongoCollection) {
+        public GetFriendsIDsTask(MongoCollection<Document> mongoCollection,FriendsIDsCallback callback) {
             this.mongoCollection = mongoCollection;
+            this.callback = callback;
         }
 
         @Override
@@ -183,12 +181,15 @@ public class Friends extends AppCompatActivity implements FriendsIDsCallback , F
         }
     }
 
+
+
     public class GetFriendsNamesTask extends AsyncTask<List<String>, Void, List<String>> {
 
-        private final MongoCollection<Document> mongoCollection;
+        private MongoCollection<Document> mongoCollection;
         private FriendsNamesCallback callback;
-        public GetFriendsNamesTask(MongoCollection<Document> mongoCollection) {
+        public GetFriendsNamesTask(MongoCollection<Document> mongoCollection,FriendsNamesCallback callback) {
             this.mongoCollection = mongoCollection;
+            this.callback=callback;
         }
         List<String> friendsNamesList = new ArrayList<>();
         @Override
@@ -215,20 +216,9 @@ public class Friends extends AppCompatActivity implements FriendsIDsCallback , F
 
             return friendsNamesList;
         }
-
         protected void onPostExecute(List<String> friendsNamesList) {
             if (callback != null) {
                 callback.onFriendsNamesReceived(friendsNamesList);
-
-
-                for (int i = 0; i < friendsIdArray.length; i++) {
-
-                    friendsNamesandId.add(new FriendsNamesandID(namesArray[i], friendsIdArray[i]));
-
-
-                }
-
-
 
             }
 
