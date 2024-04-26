@@ -58,13 +58,11 @@ public class Friends extends AppCompatActivity implements FriendsIDsCallback , F
                     }
                 });
 
-
           RecycleViewAdapter adapter = new RecycleViewAdapter(this, friendsNamesandId);
           recyclerView.setAdapter(adapter);
           recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
           fetchFriendIDs();
-
 
     }
     private void fetchFriendIDs(){
@@ -86,18 +84,7 @@ public class Friends extends AppCompatActivity implements FriendsIDsCallback , F
                   new GetFriendsIDsTask(mongoCollection,Friends.this).execute(newuserID);
       }
 });
-
-
-
       }
-
-
-
-
-
-
-
-
     @Override
     public void onFriendsIDReceived(List<String> friendsIDList) {
 
@@ -129,19 +116,6 @@ public class Friends extends AppCompatActivity implements FriendsIDsCallback , F
         recyclerView.getAdapter().notifyDataSetChanged();
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public class GetFriendsIDsTask extends AsyncTask<String, Void, List<String>> {
 
@@ -180,8 +154,6 @@ public class Friends extends AppCompatActivity implements FriendsIDsCallback , F
             }
         }
     }
-
-
 
     public class GetFriendsNamesTask extends AsyncTask<List<String>, Void, List<String>> {
 
