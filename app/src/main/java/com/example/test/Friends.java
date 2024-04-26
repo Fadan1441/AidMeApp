@@ -3,6 +3,7 @@ package com.example.test;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -35,6 +36,9 @@ public class Friends extends AppCompatActivity implements FriendsIDsCallback , F
     List<FriendsNamesandID> friendsNamesandId = new ArrayList<>();
     List<String> nfriendsIDList = new ArrayList<>();
     List<String> nfriendsNamesList = new ArrayList<>();
+    String[] friendsIdArray;
+    String [] namesArray;
+    RecyclerView recyclerView;
     String Appid = "application-0-dlsschp";
 
     @Override
@@ -76,30 +80,18 @@ public class Friends extends AppCompatActivity implements FriendsIDsCallback , F
                 GetFriendsIDsTask getFriendsIDsTask = new GetFriendsIDsTask(mongoCollection);
                 getFriendsIDsTask.execute(newuserID);
 
-                GetFriendsNamesTask getFriendsNamesTask = new GetFriendsNamesTask(mongoCollection);
-                getFriendsNamesTask.execute(nfriendsIDList);
 
 
-                nfriendsIDList = onFriendsIDReceived(nfriendsIDList);
-                nfriendsNamesList = onFriendsNamesReceived(nfriendsIDList);
 
 
-                String[] friendsIdArray = nfriendsIDList.toArray(new String[0]);
-                String[] namesArray = nfriendsNamesList.toArray(new String[0]);
 
-                for (int i = 0; i < friendsIdArray.length; i++) {
-
-                    friendsNamesandId.add(new FriendsNamesandID(namesArray[i], friendsIdArray[i]));
-
-
-                }
             }
         });
 
 
-        RecycleViewAdapter adapter = new RecycleViewAdapter(this, friendsNamesandId);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+          RecycleViewAdapter adapter = new RecycleViewAdapter(this, friendsNamesandId);
+          recyclerView.setAdapter(adapter);
+          recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
 
@@ -115,26 +107,29 @@ public class Friends extends AppCompatActivity implements FriendsIDsCallback , F
 
 
     @Override
-    public List<String> onFriendsIDReceived(List<String> friendsIDList) {
+    public void onFriendsIDReceived(List<String> friendsIDList) {
 
+        GetFriendsNamesTask getFriendsNamesTask = new GetFriendsNamesTask(mongoCollection);
+        getFriendsNamesTask.execute(friendsIDList);
 
         List<String> processedIDs = new ArrayList<>();
 
         for (String friendID : friendsIDList) {
             processedIDs.add(friendID);
         }
-        return processedIDs;
+        friendsIdArray = processedIDs.toArray(new String[0]);
     }
 
     @Override
-    public List<String> onFriendsNamesReceived(List<String> friendsNamesList) {
+    public void onFriendsNamesReceived(List<String> friendsNamesList) {
 
         List<String> processedIDs = new ArrayList<>();
 
         for (String friendNames : friendsNamesList) {
             processedIDs.add(friendNames);
         }
-        return processedIDs;
+           namesArray = processedIDs.toArray(new String[0]);
+            Log.v("Data","number of j friends is: "+namesArray.length);
 
     }
 
@@ -224,6 +219,17 @@ public class Friends extends AppCompatActivity implements FriendsIDsCallback , F
         protected void onPostExecute(List<String> friendsNamesList) {
             if (callback != null) {
                 callback.onFriendsNamesReceived(friendsNamesList);
+
+
+                for (int i = 0; i < friendsIdArray.length; i++) {
+
+                    friendsNamesandId.add(new FriendsNamesandID(namesArray[i], friendsIdArray[i]));
+
+
+                }
+
+
+
             }
 
         }
