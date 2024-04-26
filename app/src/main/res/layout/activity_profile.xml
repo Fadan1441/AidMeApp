@@ -5,18 +5,14 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/images__6_"
     tools:context=".Profile">
-
-
-
-
-
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="match_parent"
         android:layout_height="61dp"
-        android:background="#6750A3"
+        android:background="@android:color/system_control_activated_dark"
         android:text="Profile"
         android:textAlignment="center"
         android:textColor="@color/white"

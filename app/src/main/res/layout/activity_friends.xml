@@ -5,6 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/images__6_"
+
     tools:context=".Friends">
 
 
@@ -12,7 +14,7 @@
         android:id="@+id/textView10"
         android:layout_width="match_parent"
         android:layout_height="61dp"
-        android:background="#6750A3"
+        android:background="@android:color/system_control_activated_dark"
         android:text="Friends"
         android:textAlignment="center"
         android:textColor="@color/white"
@@ -41,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="62dp"
         android:text="Add Friends"
-        android:background="#6750A3"
+        android:background="@android:color/system_control_activated_dark"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

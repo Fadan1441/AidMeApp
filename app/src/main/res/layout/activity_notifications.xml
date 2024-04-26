@@ -5,7 +5,9 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/images__6_"
     tools:context=".Notifications">
+
 
 
 
@@ -14,7 +16,7 @@
         android:id="@+id/textView12"
         android:layout_width="match_parent"
         android:layout_height="61dp"
-        android:background="#6750A3"
+        android:background="@android:color/holo_red_light"
         android:text="Notifications"
         android:textAlignment="center"
         android:textColor="@color/white"

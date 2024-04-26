@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/images__6_"
     tools:context=".SignIN">
 
 
@@ -54,7 +55,7 @@ android:layout_width="110dp"
 android:layout_height="64dp"
 android:text="Sign in"
 android:textColor="@color/white"
-android:background="#6750A3"
+    android:background="@android:color/system_control_activated_dark"
 app:layout_constraintBottom_toBottomOf="parent"
 app:layout_constraintEnd_toEndOf="parent"
 app:layout_constraintHorizontal_bias="0.498"
