@@ -27,7 +27,6 @@ String userEmail;
 String userPassword;
 String authToken;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,12 +36,9 @@ String authToken;
         passwordEditText = findViewById(R.id.etPassword);
         bsignIn = findViewById(R.id.bsignIn);
 
-
         bsignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
 
                 userEmail = emailEditText.getText().toString();
                 userPassword = passwordEditText.getText().toString();
@@ -55,14 +51,11 @@ String authToken;
 
                 Document queryFilter2 = new Document("email", userEmail);
 
-
                 //Generating a session token
 
                 mongoCollection.findOne(queryFilter2).getAsync(new App.Callback<Document>() {
                     @Override
                     public void onResult(App.Result<Document> result) {
-
-
 
                         if(result.isSuccess()){
 
@@ -71,12 +64,9 @@ String authToken;
                             ObjectId documentId = userDoc.getObjectId("_id");
                             String userId = documentId.toString();
 
-
                              authToken = SessionManger.createSession(userId);
 
-
                             Log.v("Data", "Session Token Created ");
-
 
                         }else{
 
@@ -84,16 +74,8 @@ String authToken;
                             Log.v("Error", "Token not made");
                             Exception error = result.getError();
                         }
-
-
-
-
-
-
                     }
                 });
-
-
 
                 findTask.getAsync(task->{
 
@@ -117,10 +99,6 @@ String authToken;
 
                             finish();
 
-
-
-
-
                         }else {
 
                             // No matching email and password found
@@ -137,45 +115,11 @@ String authToken;
                         Log.e("Error", "Error querying MongoDB: "+error.getMessage(),error);
                         Toast.makeText(SignIN.this, "Error querying MongoDB", Toast.LENGTH_SHORT).show();
 
-
-
-
                     }
-
-
-
-
-
-
-
-
-
                 });
-
-
-
-
-
-
             }
         });
-
-
-
-
-
-
-
-
-
-
-
             }
-
-
-
-
-
     }
 
 

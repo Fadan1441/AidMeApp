@@ -37,10 +37,11 @@ import io.realm.mongodb.mongo.MongoCollection;
 import io.realm.mongodb.mongo.MongoDatabase;
 
 public class Home1 extends AppCompatActivity {
-    private Button dial911;
+    private Button dial997;
     private Button notifi;
     private Button profile;
     private Button friends;
+    private Button Map;
     private static final int NOTIFICATION_ID = 123;
     private static final String CHANNEL_ID = "my_channel";
     MongoDatabase mongoDatabase;
@@ -53,16 +54,19 @@ public class Home1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_home1);
-        dial911 = findViewById(R.id.b911);
+        dial997 = findViewById(R.id.b997);
         notifi = findViewById(R.id.bNotifi);
         profile = findViewById(R.id.bProfile);
         friends = findViewById(R.id.bFriends);
+        Map = findViewById(R.id.goToMap);
+
         // signing in into mogo databaase
         Realm.init(this);
         App app = new App(new AppConfiguration.Builder(Appid).build());
         Credentials credentials = Credentials.emailPassword("moody1441@gmail.com","moodysf1423");
         //getting the token
         String authToken = getIntent().getStringExtra("AUTH_TOKEN");
+
         app.loginAsync(credentials, new App.Callback<User>(){
             @Override
             public void onResult(App.Result<User> result) {
@@ -87,10 +91,10 @@ public class Home1 extends AppCompatActivity {
         });
 
 
-        dial911.setOnClickListener(new View.OnClickListener() {
+        dial997.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String nineoneone = "911";
+                String nineoneone = "997";
 
                 Intent i = new Intent(Intent.ACTION_DIAL);
 
@@ -131,6 +135,16 @@ public class Home1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Home1.this, Friends.class);
+                // Pass the authToken as an extra in the intent
+                intent.putExtra("AUTH_TOKEN", authToken);
+
+                startActivity(intent);
+            }
+        });
+        Map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Home1.this, Map.class);
                 // Pass the authToken as an extra in the intent
                 intent.putExtra("AUTH_TOKEN", authToken);
 
@@ -181,14 +195,14 @@ public class Home1 extends AppCompatActivity {
     private List<String> retrieveRecipientsFromMongoDB() {
         // Implement your logic to retrieve recipients from MongoDB here
         // Example: You can use MongoDB Java driver or an ORM library like Spring Data MongoDB
-        // Return a list of recipient names or IDs
-        // For demonstration purpose, I'll return a hardcoded list
-        List<String> recipients = new ArrayList<>();
-        recipients.add("Recipient1");
-        recipients.add("Recipient2");
-        recipients.add("Recipient3");
-        // Add more recipients as needed
-        return recipients;
+            // Return a list of recipient names or IDs
+            // For demonstration purpose, I'll return a hardcoded list
+
+            List<String> recipients = new ArrayList<>();
+            recipients.add(String.valueOf(R.id.FriendRecyclerView));
+            // Add more recipients as needed
+            return recipients;
+
     }
 
 }

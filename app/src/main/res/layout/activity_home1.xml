@@ -21,17 +21,18 @@
 
     <Button
         android:id="@+id/bAlert"
-        android:layout_width="189dp"
-        android:layout_height="271dp"
+        android:layout_width="246dp"
+        android:layout_height="281dp"
+        android:background="@drawable/images"
         android:text="Alert"
+        android:textColor="@color/material_dynamic_neutral0"
         android:textSize="30sp"
-        android:background="#6750A3"
-        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.46"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.434" />
+        app:layout_constraintVertical_bias="0.42" />
 
     <TextView
         android:id="@+id/textView8"
@@ -46,15 +47,15 @@
         app:layout_constraintVertical_bias="0.765" />
 
     <Button
-        android:id="@+id/b911"
-        android:layout_width="97dp"
-        android:layout_height="51dp"
-        android:text="911"
-        android:textColor="@color/white"
-        android:background="#6750A3"
+        android:id="@+id/b997"
+        android:layout_width="114dp"
+        android:layout_height="58dp"
+        android:background="@color/design_default_color_error"
+        android:text="997"
+        android:textColor="@color/design_default_color_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.715"
+        app:layout_constraintHorizontal_bias="0.767"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.775" />
@@ -71,7 +72,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.906" />
+        app:layout_constraintVertical_bias="0.994" />
 
     <Button
         android:id="@+id/bProfile"
@@ -82,22 +83,36 @@
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.522"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.925" />
+        app:layout_constraintVertical_bias="0.994" />
 
     <Button
         android:id="@+id/bFriends"
-        android:layout_width="141dp"
+        android:layout_width="129dp"
         android:layout_height="49dp"
         android:background="#6750A3"
         android:text="Friends"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.996"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/bProfile"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.906" />
+        app:layout_constraintVertical_bias="0.994" />
+
+    <Button
+        android:id="@+id/goToMap"
+        android:layout_width="100dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/images__2_"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/bProfile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b997"
+        app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
