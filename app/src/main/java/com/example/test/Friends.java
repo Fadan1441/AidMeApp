@@ -76,6 +76,9 @@ public class Friends extends AppCompatActivity implements FriendsIDsCallback , F
                 GetFriendsIDsTask getFriendsIDsTask = new GetFriendsIDsTask(mongoCollection);
                 getFriendsIDsTask.execute(newuserID);
 
+                GetFriendsNamesTask getFriendsNamesTask = new GetFriendsNamesTask(mongoCollection);
+                getFriendsNamesTask.execute(nfriendsIDList);
+
 
                 nfriendsIDList = onFriendsIDReceived(nfriendsIDList);
                 nfriendsNamesList = onFriendsNamesReceived(nfriendsIDList);
@@ -113,8 +116,7 @@ public class Friends extends AppCompatActivity implements FriendsIDsCallback , F
 
     @Override
     public List<String> onFriendsIDReceived(List<String> friendsIDList) {
-        GetFriendsNamesTask getFriendsNamesTask = new GetFriendsNamesTask(mongoCollection);
-        getFriendsNamesTask.execute(friendsIDList);
+
 
         List<String> processedIDs = new ArrayList<>();
 
