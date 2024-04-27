@@ -11,6 +11,9 @@ public interface UserApi {
     @GET("/friends")
     Call<List<User>> getFriends(@Query("user_id") String userId);
 
+    @POST("/add-friend")
+    Call<User> addFriend(@Body SendFriendRequest friendRequst);
+
     @POST("/login")
     Call<User> loginUser(@Body LoginRequest loginRequest);
     @POST("/sign-up")

@@ -23,7 +23,6 @@ public class Login extends AppCompatActivity {
     String userEmail;
     String userPassword;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +37,6 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 userEmail = emailEditText.getText().toString();
                 userPassword = passwordEditText.getText().toString();
-
-                //checkAccountInBackground(email,password);
 
                 LoginRequest userDetails = new LoginRequest();
                 userDetails.setEmail(userEmail);
@@ -76,9 +73,6 @@ public class Login extends AppCompatActivity {
         });
     }
 }
-
-
-
 
 
 
