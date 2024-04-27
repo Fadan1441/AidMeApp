@@ -62,6 +62,7 @@ public class HomeActivity extends AppCompatActivity {
                     public void onResponse(Call<User> call, Response<User> response) {
                         if (response.isSuccessful()) {
                             User createdUser = response.body();
+                            Toast.makeText(HomeActivity.this, "Notified !", Toast.LENGTH_SHORT).show();
                             Log.v("notified", createdUser.toString());
                         } else {
                             Gson gson = new Gson();
