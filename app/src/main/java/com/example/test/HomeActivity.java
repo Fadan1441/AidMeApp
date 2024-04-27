@@ -41,7 +41,7 @@ public class HomeActivity extends AppCompatActivity {
         dial911.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String nineoneone = "911";
+                String nineoneone = "977";
                 Intent i = new Intent(Intent.ACTION_DIAL);
                 i.setData(Uri.parse("tel:" + nineoneone));
                 startActivity(i);
