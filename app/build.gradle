@@ -1,7 +1,17 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.google.gms:google-services:4.4.1'// Updated version of google service
+    }
+}
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.googleAndroidLibrariesMapsplatformSecretsGradlePlugin)
 }
+
 
 android {
     namespace 'com.example.test'
@@ -54,7 +64,11 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.11.0'
     implementation 'com.google.android.gms:play-services-maps:18.2.0'
 
+    implementation 'com.google.firebase:firebase-messaging:23.4.1'
+
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
 }
+
+apply plugin: 'com.google.gms.google-services'

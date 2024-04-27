@@ -58,7 +58,6 @@ public class Friends extends AppCompatActivity {
                     dataList = data;
                     adapter = new FriendsViewAdapter(dataList);
                     recyclerView.setAdapter(adapter);
-                    // Do something with the data
                 } else {
                     Gson gson = new Gson();
                     ErrorResponse message = gson.fromJson(response.errorBody().charStream(), ErrorResponse.class);
