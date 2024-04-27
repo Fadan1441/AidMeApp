@@ -32,4 +32,7 @@ public interface UserApi {
 
     @PUT("/me/{user_id}")
     Call<User> updateUser(@Path("user_id") String id, @Body UserRequest data);
+
+    @GET("/notify")
+    Call<List<Notification>> getNotifications(@Query("user_id") String id);
 }
