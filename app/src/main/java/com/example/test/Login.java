@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
 
 import retrofit2.Call;
@@ -49,14 +50,22 @@ public class Login extends AppCompatActivity {
                         if (response.isSuccessful()) {
                             User loggedUser = response.body();
                             String authToken = SessionManger.createSession(loggedUser.getId());
-                            Log.v("sesson created", loggedUser.toString());
-                            Toast.makeText(Login.this, "Sign in successful", Toast.LENGTH_SHORT).show();
-                            // Navigate to another activity or perform further actions upon successful sign-in
-                            Intent intent = new Intent(Login.this, HomeActivity.class);
-                            //passing along the token to the home activity
-                            intent.putExtra("AUTH_TOKEN", authToken);
-                            startActivity(intent);
-                            finish();
+                            FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
+                                if (!task.isSuccessful()) {
+                                    Log.i("TOKEN", "TOKEN failed to fetch registration token");
+                                    Log.w("TOKEN", "Fetching FCM registration token failed", task.getException());
+                                } else {
+                                    final String token = task.getResult();
+                                    Log.i("TOKEN!", "token firebase messaging token " + token);
+                                    FCMTokenManger.saveFCMToken(token, loggedUser.getId());
+                                }
+                                Log.v("sesson created", loggedUser.toString());
+                                Toast.makeText(Login.this, "Sign in successful", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(Login.this, HomeActivity.class);
+                                intent.putExtra("AUTH_TOKEN", authToken);
+                                startActivity(intent);
+                                finish();
+                            });
                         } else {
                             Gson gson = new Gson();
                             ErrorResponse message = gson.fromJson(response.errorBody().charStream(), ErrorResponse.class);
@@ -72,7 +81,5 @@ public class Login extends AppCompatActivity {
         });
     }
 }
-
-
 
 

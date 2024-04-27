@@ -4,7 +4,6 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.util.Log;
 
-import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -16,7 +15,7 @@ import android.content.Intent;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 
-public class MyFirebaseMessagingService extends FirebaseMessagingService {
+public class FirebaseMessagingService extends com.google.firebase.messaging.FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         // Handle received message here
@@ -24,12 +23,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             // Extract notification title and body
             String title = remoteMessage.getNotification().getTitle();
             String body = remoteMessage.getNotification().getBody();
-
             createPushNotification(title, body);
-
-            // Display notification
-            // You can use NotificationCompat.Builder to build and display the notification
-            // For simplicity, let's log the notification
             Log.d("MyFirebaseMessaging", "Received notification: " + title + " - " + body);
         }
     }

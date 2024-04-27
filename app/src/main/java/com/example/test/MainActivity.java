@@ -7,22 +7,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-
     private UserApi userApi;
-
     private Button SignIn;
     private EditText usernameEditText, passwordEditText, emailEditText;
     private Button registerButton;
-    private String uri;
-
-
-    String Appid = "application-0-dlsschp";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,9 +60,19 @@ public class MainActivity extends AppCompatActivity {
                         if (response.isSuccessful()) {
                             User createdUser = response.body();
                             Log.v("created", createdUser.toString());
-                            Intent intent = new Intent(MainActivity.this, Login.class);
-                            startActivity(intent);
-                            finish();
+                            FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
+                                if (!task.isSuccessful()) {
+                                    Log.i("TOKEN", "TOKEN failed to fetch registration token");
+                                    Log.w("TOKEN", "Fetching FCM registration token failed", task.getException());
+                                } else {
+                                    final String token = task.getResult();
+                                    Log.i("TOKEN!", "token firebase messaging token " + token);
+                                    FCMTokenManger.saveFCMToken(token, createdUser.getId());
+                                }
+                                Intent intent = new Intent(MainActivity.this, Login.class);
+                                startActivity(intent);
+                                finish();
+                            });
                         } else {
                             Gson gson = new Gson();
                             ErrorResponse message = gson.fromJson(response.errorBody().charStream(), ErrorResponse.class);

@@ -17,8 +17,12 @@ public interface UserApi {
     @POST("/notify")
     Call<User> notifyFriends(@Body NotifyRequest notifyRequest);
 
+    @POST("/save-fcm")
+    Call<User> saveFCMToken(@Body FCMTokenRequest user);
+
     @POST("/login")
     Call<User> loginUser(@Body LoginRequest loginRequest);
+
     @POST("/sign-up")
     Call<User> createUser(@Body UserRequest user);
 }
