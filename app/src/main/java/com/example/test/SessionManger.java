@@ -6,8 +6,6 @@ import java.util.Map;
 import java.util.UUID;
 
 public class SessionManger {
-
-
     private static final Map<String, String> sessionMap = new HashMap<>();
 
     // Create a session for the user and return the session token
@@ -19,8 +17,6 @@ public class SessionManger {
 
     // Retrieve the user ID associated with the session token
     public static String getUserId(String sessionToken) {
-
-
         return sessionMap.get(sessionToken);
     }
 
@@ -28,6 +24,4 @@ public class SessionManger {
     public static void invalidateSession(String sessionToken) {
         sessionMap.remove(sessionToken);
     }
-
-
 }
