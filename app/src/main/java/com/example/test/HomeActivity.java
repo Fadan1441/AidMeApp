@@ -17,6 +17,7 @@ public class HomeActivity extends AppCompatActivity {
     private Button notifi;
     private Button profile;
     private Button friends;
+    private Button map;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,8 @@ public class HomeActivity extends AppCompatActivity {
         notifi = findViewById(R.id.bNotifi);
         profile = findViewById(R.id.bProfile);
         friends = findViewById(R.id.bFriends);
+        map = findViewById(R.id.goToMap);
+
         String authToken = getIntent().getStringExtra("AUTH_TOKEN");
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -71,6 +74,17 @@ public class HomeActivity extends AppCompatActivity {
                 Intent intent = new Intent(HomeActivity.this, Friends.class);
                 // Pass the authToken as an extra in the intent
                 intent.putExtra("AUTH_TOKEN", authToken);
+                startActivity(intent);
+            }
+        });
+
+        map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, Map.class);
+                // Pass the authToken as an extra in the intent
+                intent.putExtra("AUTH_TOKEN", authToken);
+
                 startActivity(intent);
             }
         });
