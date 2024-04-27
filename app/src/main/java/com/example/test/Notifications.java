@@ -37,12 +37,15 @@ public class Notifications extends AppCompatActivity {
             return insets;
         });
 
+        String authToken = getIntent().getStringExtra("AUTH_TOKEN");
+
 
         recyclerView = findViewById(R.id.recyclerViewNotification);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         userApi = RetrofitClient.getClient().create(UserApi.class);
-        Call<List<Notification>> call = userApi.getNotifications("662d311081b1f175d33e715f");
+        String loggedInUser = SessionManger.getUserId(authToken);
+        Call<List<Notification>> call = userApi.getNotifications(loggedInUser);
 
         call.enqueue(new Callback<List<Notification>>() {
             @Override

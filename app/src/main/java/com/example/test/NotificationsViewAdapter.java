@@ -20,7 +20,7 @@ public class NotificationsViewAdapter extends RecyclerView.Adapter<Notifications
     @Override
     public void onBindViewHolder(@NonNull NotificationsViewAdapter.MyViewHolder holder, int position) {
         Notification item = dataList.get(position);
-        holder.textView.setText(item.getTitle());
+        holder.textView.setText(item.getBody());
     }
 
     @Override
