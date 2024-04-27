@@ -1,14 +1,8 @@
 package com.example.test;
-import com.google.gson.annotations.SerializedName;
-import java.util.List;
-
-public class User {
-    @SerializedName("_id")
-    private String id;
+public class UserRequest {
     private String username;
     private String email;
     private String password;
-    private List<String> friends;
 
     public String getEmail() {
         return email;
@@ -33,15 +27,4 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public List<String> getFriends() {
-        return friends;
-    }
-
-    public void setFriends(List<String> friends) {
-        this.friends = friends;
-    }
-
-    public String getId() { return id; }
-    public void setId(String id) { this.id = id; }
 }

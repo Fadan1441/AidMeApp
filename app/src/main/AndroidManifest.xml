@@ -5,8 +5,9 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-
     <application
+        android:usesCleartextTraffic="true"
+        android:name=".MainEntryPoint"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -17,13 +18,16 @@
         android:theme="@style/Theme.Test"
         tools:targetApi="31" >
 
-
         <activity
             android:name=".Map"
             android:exported="false" />
-
         <activity
-            android:name=".Add_Friends"
+            android:name=".MainEntryPoint"
+            android:exported="false"
+            android:label="@string/title_activity_my_application"
+            android:theme="@style/Theme.Test" />
+        <activity
+            android:name=".AddFriendActivity"
             android:exported="false" />
         <activity
             android:name=".Friends"
@@ -35,10 +39,10 @@
             android:name=".Notifications"
             android:exported="false" />
         <activity
-            android:name=".Home1"
+            android:name=".HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".SignIN"
+            android:name=".Login"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

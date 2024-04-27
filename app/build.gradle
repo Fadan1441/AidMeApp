@@ -3,8 +3,6 @@ plugins {
     alias(libs.plugins.googleAndroidLibrariesMapsplatformSecretsGradlePlugin)
 }
 
-apply plugin: 'realm-android'
-
 android {
     namespace 'com.example.test'
     compileSdk 34
@@ -17,22 +15,11 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
     }
 
-    packagingOptions {
-        exclude 'META-INF/spring.tooling'
-        exclude 'META-INF/spring.handlers'
-        exclude 'META-INF/spring.factories'
-        exclude 'META-INF/spring.schemas'
-        exclude 'META-INF/license.txt'
-        exclude 'META-INF/notice.txt'
-        exclude 'META-INF/spring/aot.factories'
-        exclude 'META-INF/INDEX.LIST'
-        exclude 'META-INF/spring-configuration-metadata.json'
-        exclude 'META-INF/additional-spring-configuration-metadata.json'
-        exclude 'META-INF/DEPENDENCIES'
-        exclude 'META-INF/native-image/org.mongodb/bson/native-image.properties'
-    }
     buildTypes {
         release {
             minifyEnabled false
@@ -44,10 +31,16 @@ android {
         targetCompatibility JavaVersion.VERSION_17
     }
     buildFeatures {
-        viewBinding true
+        compose true
     }
-
-
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.5.1'
+    }
+    packaging {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
 }
 
 dependencies {
@@ -57,23 +50,11 @@ dependencies {
     implementation libs.activity
     implementation libs.constraintlayout
 
-    // Core Spring Framework dependencies
-    implementation 'org.springframework:spring-core:6.1.6'
-    implementation 'org.springframework:spring-context:6.1.6'
-    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
-    // Spring Data MongoDB dependency
-    implementation 'org.springframework.data:spring-data-mongodb:3.2.5'
-    implementation libs.spring.boot.starter.data.mongodb
-    implementation libs.play.services.maps
+    implementation 'com.squareup.retrofit2:retrofit:2.11.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.11.0'
+    implementation 'com.google.android.gms:play-services-maps:18.2.0'
 
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
-    implementation 'com.google.android.gms:play-services-maps:18.2.0'
-
-
-}
-
-realm {
-    syncEnabled = true
 }

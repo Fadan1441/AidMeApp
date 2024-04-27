@@ -4,9 +4,7 @@ buildscript {
     repositories {
         mavenCentral()
     }
-    dependencies {
-        classpath "io.realm:realm-gradle-plugin:10.15.1"
-    }
+    dependencies {}
 }
 
 
@@ -14,6 +12,7 @@ plugins {
     alias(libs.plugins.androidApplication) apply false
     alias(libs.plugins.googleAndroidLibrariesMapsplatformSecretsGradlePlugin) apply false
 }
+
 allprojects {
     repositories {
 

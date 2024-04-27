@@ -25,4 +25,3 @@ play-services-maps = { group = "com.google.android.gms", name = "play-services-m
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 googleAndroidLibrariesMapsplatformSecretsGradlePlugin = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "googleAndroidLibrariesMapsplatformSecretsGradlePlugin" }
-

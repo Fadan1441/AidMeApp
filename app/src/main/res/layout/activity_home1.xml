@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/images__6_"
-
-    tools:context=".Home1">
+    tools:context=".HomeActivity">
 
     <TextView
         android:id="@+id/this_is_the_home_pge"
