@@ -21,7 +21,6 @@ import retrofit2.Response;
 
 public class Friends extends AppCompatActivity {
     private UserApi userApi;
-
     private List<User> dataList;
     private RecyclerView recyclerView;
     private FriendsViewAdapter adapter;
@@ -46,7 +45,7 @@ public class Friends extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         userApi = RetrofitClient.getClient().create(UserApi.class);
-            String loggedInUser = SessionManger.getUserId(authToken);
+        String loggedInUser = SessionManger.getUserId(authToken);
         // Make the API call with the parameter
         Call<List<User>> call = userApi.getFriends(loggedInUser);
         call.enqueue(new Callback<List<User>>() {

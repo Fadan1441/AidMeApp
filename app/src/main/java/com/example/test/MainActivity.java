@@ -67,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
                             Intent intent = new Intent(MainActivity.this, Login.class);
                             startActivity(intent);
                             finish();
-                            // Do something with the created book
                         } else {
                             Gson gson = new Gson();
                             ErrorResponse message = gson.fromJson(response.errorBody().charStream(), ErrorResponse.class);

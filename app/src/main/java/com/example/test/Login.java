@@ -19,7 +19,6 @@ public class Login extends AppCompatActivity {
     private UserApi userApi;
     private EditText emailEditText, passwordEditText;
     private Button bsignIn;
-
     String userEmail;
     String userPassword;
 

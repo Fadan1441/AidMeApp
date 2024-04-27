@@ -14,6 +14,9 @@ public interface UserApi {
     @POST("/add-friend")
     Call<User> addFriend(@Body SendFriendRequest friendRequst);
 
+    @POST("/notify")
+    Call<User> notifyFriends(@Body NotifyRequest notifyRequest);
+
     @POST("/login")
     Call<User> loginUser(@Body LoginRequest loginRequest);
     @POST("/sign-up")
