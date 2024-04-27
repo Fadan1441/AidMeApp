@@ -15,7 +15,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 
 public class Map extends AppCompatActivity implements OnMapReadyCallback {
-    private GoogleMap myMap ;
+    private GoogleMap myMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,6 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(Map.this);
-
     }
 
 
