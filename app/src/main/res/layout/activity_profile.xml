@@ -9,6 +9,30 @@
     tools:context=".Profile">
 
     <TextView
+        android:id="@+id/textViewemail"
+        android:layout_width="81dp"
+        android:layout_height="34dp"
+        android:text="E-mail"
+        app:layout_constraintBottom_toTopOf="@+id/uEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.093"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/uUsername"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textViewpassword"
+        android:layout_width="81dp"
+        android:layout_height="34dp"
+        android:text="Password"
+        app:layout_constraintBottom_toTopOf="@+id/uPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/uEmail"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
         android:id="@+id/textView11"
         android:layout_width="match_parent"
         android:layout_height="61dp"
@@ -38,7 +62,7 @@
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.26" />
+        app:layout_constraintVertical_bias="0.363" />
 
     <EditText
         android:id="@+id/uEmail"
@@ -51,10 +75,10 @@
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.462"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.606" />
+        app:layout_constraintVertical_bias="0.559" />
 
     <EditText
         android:id="@+id/uPassword"
@@ -70,21 +94,21 @@
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.416" />
+        app:layout_constraintVertical_bias="0.738" />
 
     <Button
         android:id="@+id/bUpdate"
         android:layout_width="110dp"
         android:layout_height="64dp"
+        android:background="#2B4678"
         android:text="Update"
         android:textColor="@color/white"
-        android:background="#2B4678"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.754" />
+        app:layout_constraintVertical_bias="0.887" />
 
     <TextView
         android:id="@+id/showID"
@@ -92,10 +116,23 @@
         android:layout_height="77dp"
         android:text="TextView"
         android:textSize="20sp"
+        android:textIsSelectable="true"
         app:layout_constraintBottom_toTopOf="@+id/uUsername"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11"
-        app:layout_constraintVertical_bias="0.55" />
+        app:layout_constraintVertical_bias="0.425" />
+
+    <TextView
+        android:id="@+id/textViewusername"
+        android:layout_width="81dp"
+        android:layout_height="34dp"
+        android:text="Username"
+        app:layout_constraintBottom_toTopOf="@+id/uUsername"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/showID"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

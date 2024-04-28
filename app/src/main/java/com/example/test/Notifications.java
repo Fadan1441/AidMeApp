@@ -40,8 +40,11 @@ public class Notifications extends AppCompatActivity {
         String authToken = getIntent().getStringExtra("AUTH_TOKEN");
 
 
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
         recyclerView = findViewById(R.id.recyclerViewNotification);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(linearLayoutManager);
 
         userApi = RetrofitClient.getClient().create(UserApi.class);
         String loggedInUser = SessionManger.getUserId(authToken);
