@@ -22,11 +22,11 @@
 
     <Button
         android:id="@+id/bAlert"
-        android:layout_width="246dp"
-        android:layout_height="281dp"
+        android:layout_width="266dp"
+        android:layout_height="283dp"
         android:background="@drawable/images__8_"
-        android:text="Alert"
         android:gravity="bottom|center"
+        android:text="Alert"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -70,7 +70,7 @@
         android:id="@+id/bNotifi"
         android:layout_width="141dp"
         android:layout_height="49dp"
-        android:background="@android:color/system_control_activated_dark"
+        android:background="#2B4678"
         android:text="Notifications"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -78,13 +78,13 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.994" />
+        app:layout_constraintVertical_bias="1" />
 
     <Button
         android:id="@+id/bProfile"
         android:layout_width="141dp"
         android:layout_height="49dp"
-        android:background="@android:color/system_control_activated_dark"
+        android:background="#2B4678"
         android:text="Profile"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -92,13 +92,13 @@
         app:layout_constraintHorizontal_bias="0.522"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.994" />
+        app:layout_constraintVertical_bias="1" />
 
     <Button
         android:id="@+id/bFriends"
         android:layout_width="129dp"
         android:layout_height="49dp"
-        android:background="@android:color/system_control_activated_dark"
+        android:background="#2B4678"
         android:text="Friends"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -106,7 +106,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/bProfile"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.994" />
+        app:layout_constraintVertical_bias="1" />
 
     <Button
         android:id="@+id/goToMap"

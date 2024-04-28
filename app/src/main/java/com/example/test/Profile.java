@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -26,6 +27,7 @@ public class Profile extends AppCompatActivity {
     private EditText email;
     private EditText password;
     private Button updateBtn;
+    private TextView userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +54,13 @@ public class Profile extends AppCompatActivity {
                 email = findViewById(R.id.uEmail);
                 userName = findViewById(R.id.uUsername);
                 password = findViewById(R.id.uPassword);
-
+                userID = findViewById(R.id.showID);
                 if (response.isSuccessful()) {
                     // Handle successful response
                     User data = response.body();
                     email.setText(data.getEmail());
                     userName.setText(data.getUsername());
+                    userID.setText("User ID: "+data.getId().toString());
                     updateBtn = findViewById(R.id.bUpdate);
                     updateBtn.setOnClickListener(new View.OnClickListener() {
                         @Override
