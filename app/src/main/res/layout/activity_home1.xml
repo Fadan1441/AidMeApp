@@ -26,14 +26,15 @@
         android:layout_height="281dp"
         android:background="@drawable/images__8_"
         android:text="Alert"
+        android:gravity="bottom|center"
         android:textColor="@color/white"
-        android:textSize="14sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.328" />
+        app:layout_constraintVertical_bias="0.324" />
 
     <TextView
         android:id="@+id/textView8"
@@ -55,8 +56,8 @@
         android:layout_height="58dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:background="@android:color/holo_red_light"
-        android:text="997"
+        android:background="#DA1E60"
+        android:text="911"
         android:textColor="@color/design_default_color_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
